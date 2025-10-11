@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom"
 
 const AuthGuard = ({ children }) => {
     const navigate = useNavigate()
+    const {jwt} = useUserStore()
     useEffect(() => {
-        const isLoggedIn = false // поменяйте на true
-        if (!isLoggedIn) navigate("/signin")
+        if (!jwt) navigate("/signin")
     }, [])
     return children
 }
